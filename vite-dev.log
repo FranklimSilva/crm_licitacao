@@ -1,0 +1,29 @@
+
+> dev
+> vite dev --host 127.0.0.1
+
+
+  [32m[1mVITE[22m v7.3.6[39m  [2mready in [0m[1m2431[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[vite] connected.
+[2m15:17:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/lib/mock-data.ts[22m
+[vite] program reload
+[2m15:18:52[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/__root.tsx[22m
+[2m15:18:52[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/index.tsx[22m
+[2m15:20:50[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/clientes.tsx[22m
+[2m15:22:31[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/leads.tsx[22m
+[2m15:33:47[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/oportunidades.tsx[22m
+[2m15:36:29[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/faturamento.tsx[22m
+[2m15:43:11[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/__root.tsx[22m
+[2m15:44:25[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/faturamento.tsx[22m
+[2m15:50:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/__root.tsx[22m
+[vite] program reload
+[2m16:34:39[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m16:34:39[22m [36m[1m[vite][22m[39m server restarted.
+[2m16:34:40[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m16:34:40[22m [36m[1m[vite][22m[39m server restarted.
+[vite] connected.
+[2m16:58:14[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m16:58:14[22m [36m[1m[vite][22m[39m server restarted.
+[vite] connected.
