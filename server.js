@@ -1,18 +1,17 @@
-// server.js (na raiz do projeto)
-import('./dist/server/server.js')
-  .then((mod) => {
-    // Tenta executar o export padrão se for uma função/app express
-    if (typeof mod.default === 'function') {
-      const app = mod.default;
-      const port = process.env.PORT || 3000;
-      app.listen(port, () => {
-        console.log(`Servidor iniciado via proxy na porta ${port}`);
-      });
-    } else if (mod.default && mod.default.listen) {
-      // Se o arquivo compilado já chama o listen internamente ou expõe um objeto com .listen
-      mod.default.listen(process.env.PORT || 3000);
-    }
-  })
-  .catch((err) => {
-    console.error('Erro ao iniciar o servidor através do proxy da raiz:', err);
-  });
+
+  console.log("=== INICIANDO O PROXY DO SERVER NA RAIZ ===");
+
+// Tenta carregar o build de forma segura
+try {
+  import('./dist/server/server.js')
+    .then(() => {
+      console.log("=== ARQUIVO DIST/SERVER CARREGADO COM SUCESSO ===");
+    })
+    .catch((err) => {
+      console.error("=== ERRO DENTRO DA PROMESSA DE IMPORTAÇÃO ===");
+      console.error(err);
+    });
+} catch (globalError) {
+  console.error("=== ERRO FATAL DE SINTAXE OU IMPORTAÇÃO ===");
+  console.error(globalError);
+}
