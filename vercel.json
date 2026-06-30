@@ -1,11 +1,5 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": ".output",
-  "framework": null,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ]
-} 
+  "outputDirectory": "dist/client",
+  "framework": null
+}
