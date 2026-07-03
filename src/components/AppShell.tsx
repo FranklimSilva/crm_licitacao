@@ -68,8 +68,8 @@ export function AppShell({ title, subtitle, actions, children }: {
               CL
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium truncate">Carlos Lima</p>
-              <p className="text-[11px] text-sidebar-foreground/60 truncate">Consultor Sênior</p>
+              <p className="text-sm font-medium truncate">Carlos</p>
+              <p className="text-[11px] text-sidebar-foreground/60 truncate">CEO</p>
             </div>
           </div>
         </div>
