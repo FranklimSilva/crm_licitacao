@@ -1,7 +1,7 @@
 node_modules
 dist
+local
 .env
-.env*.local
 supabase
 schema.sql
 .tanstack
