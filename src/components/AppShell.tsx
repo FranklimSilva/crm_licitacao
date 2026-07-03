@@ -27,7 +27,7 @@ export function AppShell({ title, subtitle, actions, children }: {
             <Building2 className="size-5 text-sidebar-primary-foreground" />
           </div>
           <div>
-            <p className="text-sm font-semibold tracking-tight">LicitaCRM</p>
+            <p className="text-sm font-semibold tracking-tight">EP - Licitações</p>
             <p className="text-[11px] text-sidebar-foreground/60">Consultoria & Licitações</p>
           </div>
         </div>
