@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { LayoutDashboard, Inbox, Users, Target, BarChart3, Search, Bell, Building2 } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -17,7 +17,7 @@ export function AppShell({ title, subtitle, actions, children }: {
   actions?: ReactNode;
   children: ReactNode;
 }) {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
 
   return (
     <div className="min-h-screen flex bg-background">

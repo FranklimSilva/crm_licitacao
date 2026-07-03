@@ -1,40 +1,26 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { AppShell, StatusBadge } from "@/components/AppShell";
-import { getAppData } from "@/lib/data";
-import { brl } from "@/lib/types";
+import { brl, clientes, faturamento, leads, oportunidades } from "@/lib/mock-data";
 import { ArrowUpRight, TrendingUp, Inbox, Target, Wallet } from "lucide-react";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Dashboard - LicitaCRM" },
-      { name: "description", content: "Visao geral de leads, clientes, oportunidades e faturamento de licitacoes." },
-    ],
-  }),
-  loader: () => getAppData(),
-  component: Dashboard,
-});
-
-function Dashboard() {
-  const { leads, clientes, oportunidades, faturamento, source, message } = Route.useLoaderData();
+export default function Dashboard() {
   const novosLeads = leads.filter((l) => l.status === "Novo" || l.status === "Analisando").length;
   const clientesAtivos = clientes.filter((c) => c.ativo).length;
   const pipeline = oportunidades
     .filter((o) => o.etapa !== "Perdida" && o.etapa !== "Homologada")
     .reduce((s, o) => s + o.valor * (o.probabilidade / 100), 0);
-  const totalMes = faturamento.at(-1)?.valor ?? 0;
-  const maxFat = Math.max(...faturamento.map((f) => f.valor), 1);
+  const totalMes = faturamento[faturamento.length - 1].valor;
+  const maxFat = Math.max(...faturamento.map((f) => f.valor));
 
   const kpis = [
-    { label: "Novos leads (Effecti)", value: novosLeads, hint: source === "supabase" ? "sincronizado" : "dados locais", icon: Inbox, tone: "text-accent" },
+    { label: "Novos leads (Effecti)", value: novosLeads, hint: "últimas 48h", icon: Inbox, tone: "text-accent" },
     { label: "Clientes ativos", value: clientesAtivos, hint: `de ${clientes.length} cadastros`, icon: TrendingUp, tone: "text-emerald-600" },
     { label: "Pipeline ponderado", value: brl(pipeline), hint: "em disputa", icon: Target, tone: "text-primary" },
-    { label: "Faturamento do mes", value: brl(totalMes), hint: faturamento.at(-1)?.mes ?? "sem dados", icon: Wallet, tone: "text-accent" },
+    { label: "Faturamento de junho", value: brl(totalMes), hint: "+12% vs. maio", icon: Wallet, tone: "text-accent" },
   ];
 
   return (
-    <AppShell title="Dashboard" subtitle="Resumo executivo das operacoes de licitacao">
-      {source === "mock" && <SyncNotice message={message} />}
+    <AppShell title="Dashboard" subtitle="Resumo executivo das operações de licitação">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {kpis.map((k) => {
           const Icon = k.icon;
@@ -56,7 +42,7 @@ function Dashboard() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-base font-semibold">Faturamento mensal</h2>
-              <p className="text-xs text-muted-foreground">Contratos finalizados</p>
+              <p className="text-xs text-muted-foreground">Contratos finalizados em 2026</p>
             </div>
             <Link to="/faturamento" className="text-xs text-primary hover:underline inline-flex items-center gap-1">
               Ver detalhes <ArrowUpRight className="size-3" />
@@ -98,13 +84,5 @@ function Dashboard() {
         </div>
       </div>
     </AppShell>
-  );
-}
-
-function SyncNotice({ message }: { message?: string }) {
-  return (
-    <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-      {message ?? "Dados locais em uso. Configure o Supabase para sincronizar."}
-    </div>
   );
 }
